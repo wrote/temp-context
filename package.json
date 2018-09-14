@@ -1,0 +1,45 @@
+{
+  "name": "@wrote/temp-context",
+  "version": "0.0.0",
+  "description": "A test context to create and erase temp directories.",
+  "main": "build",
+  "scripts": {
+    "t": "zoroaster -a",
+    "test": "yarn t test/spec",
+    "test-build": "ALAMODE_ENV=test-build yarn test",
+    "test-all": "yarn-s test test-build",
+    "test-watch": "yarn test -w",
+    "lint": "eslint .",
+    "doc": "NODE_DEBUG=doc doc documentary -o README.md",
+    "b": "alamode src -o build",
+    "d": "NODE_DEBUG=doc doc src/index.js -g",
+    "build": "yarn-s d b doc",
+    "rec": "NODE_DEBUG=appshot appshot -T 23 -a Terminal -y 150 -f",
+    "e": "node example",
+    "example/": "yarn e example/example.js"
+  },
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wrote/temp-context.git"
+  },
+  "keywords": [
+    "temp-context",
+    "wrote"
+  ],
+  "author": "Anton <anton@adc.sh>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wrote/temp-context/issues"
+  },
+  "homepage": "https://github.com/wrote/temp-context#readme",
+  "devDependencies": {
+    "alamode": "1.4.0",
+    "documentary": "1.14.0",
+    "eslint-config-artdeco": "1.0.1",
+    "yarn-s": "1.1.0",
+    "zoroaster": "3.0.3"
+  }
+}
