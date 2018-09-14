@@ -1,7 +1,6 @@
 import { resolve } from 'path'
-import { debuglog } from 'util'
-
-const LOG = debuglog('@wrote/temp-context')
+import makePromise from 'makepromise'
+import { lstat } from 'fs'
 
 const FIXTURE = resolve(__dirname, '../fixture')
 
@@ -10,7 +9,14 @@ const FIXTURE = resolve(__dirname, '../fixture')
  */
 export default class Context {
   async _init() {
-    LOG('init context')
+  }
+  async exists(p) {
+    try {
+      await makePromise(lstat, p)
+      return true
+    } catch (err) {
+      return false
+    }
   }
   /**
    * Example method.
@@ -28,6 +34,5 @@ export default class Context {
     return resolve(__dirname, '../snapshot')
   }
   async _destroy() {
-    LOG('destroy context')
   }
 }

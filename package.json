@@ -39,7 +39,12 @@
     "alamode": "1.4.0",
     "documentary": "1.14.0",
     "eslint-config-artdeco": "1.0.1",
+    "makepromise": "3.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "3.0.3"
+  },
+  "dependencies": {
+    "@wrote/ensure-path": "1.0.2",
+    "@wrote/rm": "1.0.0"
   }
 }
