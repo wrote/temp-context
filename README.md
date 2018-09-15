@@ -192,7 +192,8 @@ One of the advantages of using test context is that they are well documented and
 
 ## TODO
 
-- [ ] Add a new item to the todo list.
+- [ ] Create `fs` context and extend it.
+- [ ] Test the `read` method.
 
 ## Copyright
 

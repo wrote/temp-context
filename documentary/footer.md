@@ -1,7 +1,8 @@
 
 ## TODO
 
-- [ ] Add a new item to the todo list.
+- [ ] Create `fs` context and extend it.
+- [ ] Test the `read` method.
 
 ## Copyright
 
