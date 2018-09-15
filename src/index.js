@@ -49,9 +49,9 @@ export default class TempContext {
   /**
    * Checks if the path exists.
    */
-  async exists(p) {
+  async exists(path) {
     try {
-      await makePromise(lstat, p)
+      await makePromise(lstat, path)
       return true
     } catch (err) {
       return false

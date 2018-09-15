@@ -2,7 +2,7 @@
 
 %NPM: @wrote/temp-context%
 
-`@wrote/temp-context` is A test context to create and erase temp directories.
+`@wrote/temp-context` is a test context to create and erase temp directories.
 
 ```sh
 yarn add -E @wrote/temp-context
