@@ -212,8 +212,6 @@ One of the advantages of using test context is that they are well documented and
 - [ ] Test the `read` method.
 - [ ] Show the example output with the terminal.
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg"></a></p>
-
 ## Copyright
 
 (c) [Wrote][1] 2018
