@@ -8,6 +8,8 @@
 yarn add -E @wrote/temp-context
 ```
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg"></a></p>
+
 ## Table Of Contents
 
 - [Table Of Contents](#table-of-contents)
@@ -15,7 +17,8 @@ yarn add -E @wrote/temp-context
 - [**class `TempContext`**](#class-tempcontext)
   * [get `TEMP`](#get-temp)
   * [`async clone(from: string, to: boolean)`](#async-clonefrom-stringto-boolean-void)
-  * [`async exists(path: string)`](#async-existspath-string-void)
+  * [`async exists(path: string): boolean`](#async-existspath-string-boolean)
+  * [`async read(path: string): string`](#async-readpath-string-string)
   * [`async snapshot(): string`](#async-snapshot-string)
   * [static `setTemp`](#static-settemp)
 - [Example](#example)
@@ -25,6 +28,9 @@ yarn add -E @wrote/temp-context
   * [Autocompletion](#autocompletion)
 - [TODO](#todo)
 - [Copyright](#copyright)
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg"></a></p>
+
 ## API
 
 The package is available by importing its default function:
@@ -32,6 +38,8 @@ The package is available by importing its default function:
 ```js
 import tempContext from '@wrote/temp-context'
 ```
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg"></a></p>
 
 ## **class `TempContext`**
 
@@ -47,9 +55,13 @@ Returns the path to the temp folder.
 
 Clones a file or directory to the specified location.
 
-### `async exists(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): void`
+### `async exists(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): boolean`
 
 Checks if the path exists.
+
+### `async read(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
+
+Reads the file and returns its contents.
 
 ### `async snapshot(): string`
 
@@ -57,7 +69,11 @@ Takes a snapshot of the temp directory, which can then be saved (and tested with
 
 ### static `setTemp`
 
-Changes the location of the temp directory for each instance of the _TempContent_ class.## Example
+Changes the location of the temp directory for each instance of the _TempContent_ class.
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg"></a></p>
+
+## Example
 
 _Zoroaster_ tests can be written either as masks, or more traditionally as specs. For example, a program might want to write given data to a file in a specified directory, as so:
 
@@ -188,14 +204,20 @@ One of the advantages of using test context is that they are well documented and
 
 ![](images/autocomplete.png)
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg"></a></p>
+
 ## TODO
 
 - [ ] Create `fs` context and extend it.
 - [ ] Test the `read` method.
 - [ ] Show the example output with the terminal.
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg"></a></p>
+
 ## Copyright
 
 (c) [Wrote][1] 2018
 
 [1]: https://wrote.cc
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-2.svg"></a></p>

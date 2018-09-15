@@ -1,4 +1,3 @@
-
 ## API
 
 The package is available by importing its default function:
@@ -6,6 +5,8 @@ The package is available by importing its default function:
 ```js
 import tempContext from '@wrote/temp-context'
 ```
+
+%~%
 
 ## **class `TempContext`**
 
@@ -26,13 +27,21 @@ Returns the path to the temp folder.
 
 Clones a file or directory to the specified location.
 
-```### async exists
+```### async exists => boolean
 [
   ["path", "string"]
 ]
 ```
 
 Checks if the path exists.
+
+```### async read => string
+[
+  ["path", "string"]
+]
+```
+
+Reads the file and returns its contents.
 
 ```### async snapshot => string
 ```
@@ -42,3 +51,5 @@ Takes a snapshot of the temp directory, which can then be saved (and tested with
 ### static `setTemp`
 
 Changes the location of the temp directory for each instance of the _TempContent_ class.
+
+%~%

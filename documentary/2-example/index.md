@@ -37,3 +37,5 @@ The outcome of all the above tests can be achieved with `zoroaster -a example/te
 One of the advantages of using test context is that they are well documented and it's possible to get auto-completes for available methods when using destructuring on the context argument to a test case, both in masks as well as in specs.
 
 ![](images/autocomplete.png)
+
+%~%
