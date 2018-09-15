@@ -19,20 +19,15 @@ export default class Context {
     }
   }
   /**
-   * Example method.
-   */
-  example() {
-    return 'OK'
-  }
-  /**
    * Path to the fixture file.
    */
   get FIXTURE() {
     return resolve(FIXTURE, 'test.txt')
   }
-  get SNAPSHOT_DIR() {
-    return resolve(__dirname, '../snapshot')
-  }
-  async _destroy() {
+  /**
+   * Path to the fixture directory.
+   */
+  get DIR() {
+    return resolve(FIXTURE, 'dir')
   }
 }

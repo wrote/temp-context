@@ -31,21 +31,23 @@ const manual = {
     const e3 = await exists(p)
     ok(!e3, 'Temp dir should have been removed after the destroy')
   },
-  async 'can statically set a specific temp'({ exists }) {
-    const p = 'test/temp2'
-    TempContext.setTemp(p)
-    const tc = new TempContext()
-    const e = await exists(p)
-    ok(!e, 'Temp dir is not supposed to exists.')
-    await tc._init()
-    const e2 = await exists(p)
-    ok(e2, 'Temp dir should have been created after the init.')
-    await tc._destroy()
-    const e3 = await exists(p)
-    ok(!e3, 'Temp dir should have been removed after the destroy')
-  },
-  _after() {
-    TempContext.setTemp('test/temp')
+  static: {
+    async 'can statically set a specific temp'({ exists }) {
+      const p = 'test/temp2'
+      TempContext.setTemp(p)
+      const tc = new TempContext()
+      const e = await exists(p)
+      ok(!e, 'Temp dir is not supposed to exists.')
+      await tc._init()
+      const e2 = await exists(p)
+      ok(e2, 'Temp dir should have been created after the init.')
+      await tc._destroy()
+      const e3 = await exists(p)
+      ok(!e3, 'Temp dir should have been removed after the destroy')
+    },
+    _after() {
+      TempContext.setTemp('test/temp')
+    },
   },
 }
 
