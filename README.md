@@ -102,10 +102,8 @@ To implement tests with masks, a mask implementation should be set up in the `ma
 
 ```js
 import { makeTestSuite } from 'zoroaster'
-import TempContext from 'TempContext'
+import TempContext from 'temp-context'
 import program from '../../src'
-
-TempContext.setTemp('example/test/temp')
 
 /**
  * This test suite will clone an input and take a snapshot of the temp directory.
@@ -147,7 +145,7 @@ Occasionally, there are times when masks are not flexible enough to run tests (a
 
 ```js
 import { join } from 'path'
-import TempContext from 'TempContext'
+import TempContext from 'temp-context'
 import { ok, equal } from 'zoroaster/assert'
 import Context from '../context'
 import program from '../../src'
@@ -194,6 +192,7 @@ One of the advantages of using test context is that they are well documented and
 
 - [ ] Create `fs` context and extend it.
 - [ ] Test the `read` method.
+- [ ] Show the example output with the terminal.
 
 ## Copyright
 

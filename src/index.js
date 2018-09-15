@@ -70,6 +70,7 @@ export default class TempContext {
    * Capture the contents of the temp directory as a string.
    */
   async snapshot() {
+    /** @type {string} */
     const s = await getSnapshot(this.TEMP)
     return s
   }

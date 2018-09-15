@@ -2,8 +2,6 @@ import { makeTestSuite } from 'zoroaster'
 import TempContext from '../../../src'
 import program from '../../src'
 
-TempContext.setTemp('example/test/temp')
-
 /**
  * This test suite will clone an input and take a snapshot of the temp directory.
  */
