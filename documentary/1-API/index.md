@@ -7,13 +7,11 @@ The package is available by importing its default function:
 import tempContext from '@wrote/temp-context'
 ```
 
-## class `TempContext`
+## **class `TempContext`**
 
 Instances of this test context class will create a `temp` directory in the `test` folder on initialisation, and remove it at the end of each test. To change the location of the test directory, the static `setTemp` method should be called with a new location.
 
-The test context is used within the _Zoroaster_ testing framework, which will initialise and destroy it for every test.
-
-
+The test context is used with the _Zoroaster_ testing framework, which will initialise and destroy it for every test. Check the [example](#example) section to see how tests are implemented.
 
 ### get `TEMP`
 

@@ -2,7 +2,7 @@ import { join } from 'path'
 import rm from '@wrote/rm'
 import ensurePath from '@wrote/ensure-path'
 import Pedantry from 'pedantry'
-import { lstat } from 'fs'
+import { lstat, createReadStream } from 'fs'
 import { collect } from 'catchment'
 import clone from '@wrote/clone'
 import makePromise from 'makepromise'
@@ -28,6 +28,15 @@ export default class TempContext {
   async _init() {
     const p = join(TEMP, 'temp')
     await ensurePath(p)
+  }
+  /**
+   * Read a file.
+   * @param {string} path Path of the file to read.
+   */
+  async read(path) {
+    const rs = createReadStream(path)
+    const res = await collect(rs)
+    return res
   }
   /**
    * Path to the temp directory.
