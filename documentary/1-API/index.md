@@ -43,6 +43,23 @@ Checks if the path exists.
 
 Reads the file and returns its contents.
 
+```### async readInTemp => string
+[
+  ["path", "string"]
+]
+```
+
+Reads the file in the temp directory and returns its contents.
+
+```### async write => string
+[
+  ["data", "string"],
+  ["path", "string"]
+]
+```
+
+Write to the file in the temp directory and returns its path.
+
 ```### async snapshot => string
 ```
 

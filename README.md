@@ -8,7 +8,7 @@
 yarn add -E @wrote/temp-context
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
 
 ## Table Of Contents
 
@@ -19,6 +19,8 @@ yarn add -E @wrote/temp-context
   * [`async clone(from: string, to: boolean)`](#async-clonefrom-stringto-boolean-void)
   * [`async exists(path: string): boolean`](#async-existspath-string-boolean)
   * [`async read(path: string): string`](#async-readpath-string-string)
+  * [`async readInTemp(path: string): string`](#async-readintemppath-string-string)
+  * [`async write(data: string, path: string): string`](#async-writedata-stringpath-string-string)
   * [`async snapshot(): string`](#async-snapshot-string)
   * [static `setTemp`](#static-settemp)
 - [Example](#example)
@@ -29,7 +31,7 @@ yarn add -E @wrote/temp-context
 - [TODO](#todo)
 - [Copyright](#copyright)
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
 ## API
 
@@ -39,7 +41,7 @@ The package is available by importing its default function:
 import tempContext from '@wrote/temp-context'
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
 ## **class `TempContext`**
 
@@ -63,6 +65,14 @@ Checks if the path exists.
 
 Reads the file and returns its contents.
 
+### `async readInTemp(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
+
+Reads the file in the temp directory and returns its contents.
+
+### `async write(`<br/>&nbsp;&nbsp;`data: string,`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
+
+Write to the file in the temp directory and returns its path.
+
 ### `async snapshot(): string`
 
 Takes a snapshot of the temp directory, which can then be saved (and tested with _Zoroaster_ masks).
@@ -71,7 +81,7 @@ Takes a snapshot of the temp directory, which can then be saved (and tested with
 
 Changes the location of the temp directory for each instance of the _TempContent_ class.
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true"></a></p>
 
 ## Example
 
@@ -204,7 +214,7 @@ One of the advantages of using test context is that they are well documented and
 
 ![](images/autocomplete.png)
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true"></a></p>
 
 ## TODO
 
@@ -218,4 +228,4 @@ One of the advantages of using test context is that they are well documented and
 
 [1]: https://wrote.cc
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-2.svg"></a></p>
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-2.svg?sanitize=true"></a></p>
