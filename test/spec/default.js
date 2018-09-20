@@ -1,6 +1,7 @@
 import { equal, ok } from 'zoroaster/assert'
 import makePromise from 'makepromise'
 import { lstat } from 'fs'
+import { join } from 'path'
 import TempContext from '../../src'
 import Context from '../context'
 
@@ -13,6 +14,16 @@ const T = {
   async 'creates a temp directory'({ TEMP }) {
     const s = await makePromise(lstat, TEMP)
     ok(s.isDirectory())
+  },
+  async 'writes a file'({ TEMP, write, readInTemp }) {
+    const p = 'data.temp'
+    const d = 'hello-world'
+    const pp = await write(d, p)
+    equal(pp, join(TEMP, p))
+    const s = await makePromise(lstat, join(TEMP, p))
+    ok(s.isFile())
+    const r = await readInTemp(p)
+    equal(r, d)
   },
 }
 
