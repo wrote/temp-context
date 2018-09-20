@@ -2,7 +2,7 @@ const { join } = require('path');
 let rm = require('@wrote/rm'); if (rm && rm.__esModule) rm = rm.default;
 let ensurePath = require('@wrote/ensure-path'); if (ensurePath && ensurePath.__esModule) ensurePath = ensurePath.default;
 let Pedantry = require('pedantry'); if (Pedantry && Pedantry.__esModule) Pedantry = Pedantry.default;
-const { lstat, createReadStream } = require('fs');
+const { lstat, createReadStream, createWriteStream } = require('fs');
 const { collect } = require('catchment');
 let clone = require('@wrote/clone'); if (clone && clone.__esModule) clone = clone.default;
 let makePromise = require('makepromise'); if (makePromise && makePromise.__esModule) makePromise = makePromise.default;
@@ -37,6 +37,29 @@ const getSnapshot = async (path) => {
     const rs = createReadStream(path)
     const res = await collect(rs)
     return res
+  }
+  /**
+   * Read a file relative to the temp directory.
+   * @param {string} path Path of the file in the temp directory.
+   */
+  async readInTemp(path) {
+    const p = join(this.TEMP, path)
+    const rs = createReadStream(p)
+    const res = await collect(rs)
+    return res
+  }
+  /**
+   * Write a file in a temp directory.
+   * @param {string} data Data to write.
+   * @param {string} path Path to the file within the temp directory.
+   */
+  async write(data, path) {
+    const p = join(this.TEMP, path)
+    const ws = createWriteStream(p)
+    await new Promise((r, j) => {
+      ws.on('error', j).on('close', r).end(data)
+    })
+    return p
   }
   /**
    * Path to the temp directory.
