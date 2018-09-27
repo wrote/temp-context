@@ -1,8 +1,14 @@
+## 28 September 2018
+
+### 1.3.0
+
+- [feature] Partial snapshot.
+
 ## 27 September 2018
 
 ### 1.2.0
 
-- [feature] Add `exists` method.
+- [fix] Add `exists` method documentation.
 - [fix] Remove and clone symlinks.
 
 ## 20 September 2018
