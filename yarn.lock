@@ -28,6 +28,14 @@
     "@wrote/read-dir-structure" "1.0.1"
     makepromise "3.0.1"
 
+"@wrote/clone@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@wrote/clone/-/clone-1.1.0.tgz#6f5d05b320c3294d6879f65a3950475249cdfcab"
+  dependencies:
+    "@wrote/ensure-path" "1.0.3"
+    "@wrote/read-dir-structure" "1.0.1"
+    makepromise "3.0.1"
+
 "@wrote/ensure-path@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@wrote/ensure-path/-/ensure-path-1.0.3.tgz#7faeff4ebb5b3972b745e0cc85f3e06cbca51d51"
@@ -40,9 +48,9 @@
   dependencies:
     makepromise "2.0.0"
 
-"@wrote/rm@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@wrote/rm/-/rm-1.0.0.tgz#d7e95c4296b346370d313e383397e1eaf02d8eb8"
+"@wrote/rm@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@wrote/rm/-/rm-1.1.0.tgz#6dd14b164e9ac11e9c5c90b569ca7a987bea5b52"
   dependencies:
     "@wrote/read-dir-structure" "1.0.1"
     makepromise "3.0.1"
@@ -85,10 +93,6 @@ assert-throws@3.1.1:
     erotic "2.0.1"
     erte "1.1.4"
 
-catchment@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/catchment/-/catchment-2.0.1.tgz#df0a05ac2e1194cf280c2444d5bb564a9cc8f488"
-
 catchment@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/catchment/-/catchment-3.0.1.tgz#11dab5fea86d412343e797e052b21091b7e83a55"
@@ -124,9 +128,9 @@ difflib@~0.2.1:
   dependencies:
     heap ">= 0.2.0"
 
-documentary@1.18.0:
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.18.0.tgz#4c4dc0b3b937b6066fe8d184050e6eac2352841e"
+documentary@1.20.1:
+  version "1.20.1"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.20.1.tgz#07eed06dec4ea4e69704840e115f7bd79917736b"
   dependencies:
     "@wrote/clone" "1.0.1"
     "@wrote/ensure-path" "1.0.3"
@@ -137,7 +141,8 @@ documentary@1.18.0:
     pedantry "2.2.0"
     restream "3.2.1"
     rexml "1.1.0"
-    spawncommand "2.0.1"
+    spawncommand "2.1.0"
+    typal "1.2.0"
     which-stream "1.0.1"
 
 dreamopt@~0.6.0:
@@ -250,17 +255,18 @@ spawncommand@1.1.0:
   dependencies:
     catchment "^1.0.0"
 
-spawncommand@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/spawncommand/-/spawncommand-2.0.1.tgz#088476fd8aa3c63932309ce0e76a8924d51a34ab"
-  dependencies:
-    catchment "2.0.1"
-
 spawncommand@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/spawncommand/-/spawncommand-2.1.0.tgz#a5ef60ae7892e8718a9c717fc52fe5f54521e0de"
   dependencies:
     catchment "3.1.1"
+
+typal@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/typal/-/typal-1.2.0.tgz#b9e24fa8d187adf7819c12595cd142a80be18f5f"
+  dependencies:
+    mismatch "1.0.3"
+    rexml "1.1.0"
 
 usually@1.0.0:
   version "1.0.0"

@@ -47,15 +47,15 @@
   "homepage": "https://github.com/wrote/temp-context#readme",
   "devDependencies": {
     "alamode": "1.5.1",
-    "documentary": "1.18.0",
+    "documentary": "1.20.1",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "3.5.1"
   },
   "dependencies": {
-    "@wrote/clone": "1.0.1",
+    "@wrote/clone": "1.1.0",
     "@wrote/ensure-path": "1.0.3",
-    "@wrote/rm": "1.0.0",
+    "@wrote/rm": "1.1.0",
     "catchment": "3.1.1",
     "makepromise": "3.0.1",
     "pedantry": "2.2.0"
