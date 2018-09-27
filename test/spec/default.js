@@ -5,9 +5,9 @@ import { join } from 'path'
 import TempContext from '../../src'
 import Context from '../context'
 
-/** @type {Object.<string, (tc: TempContext)>} */
+/** @type {Object.<string, (tc: TempContext, c: Context)>} */
 const T = {
-  context: [TempContext],
+  context: [TempContext, Context],
   'is a function'() {
     equal(typeof TempContext, 'function')
   },
@@ -24,6 +24,13 @@ const T = {
     ok(s.isFile())
     const r = await readInTemp(p)
     equal(r, d)
+  },
+  async 'partial snapshot'({ TEMP, clone, snapshot }, { DIR }) {
+    await clone(DIR, TEMP)
+    const s = await snapshot('dir/dir2')
+    equal(s, `# 1.txt
+
+dir2-1.txt`)
   },
 }
 

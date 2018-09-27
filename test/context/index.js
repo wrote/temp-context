@@ -8,8 +8,6 @@ const FIXTURE = resolve(__dirname, '../fixture')
  * A testing context for the package.
  */
 export default class Context {
-  async _init() {
-  }
   async exists(p) {
     try {
       await makePromise(lstat, p)

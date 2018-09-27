@@ -2,10 +2,11 @@ import { join } from 'path'
 import rm from '@wrote/rm'
 import ensurePath from '@wrote/ensure-path'
 import Pedantry from 'pedantry'
-import { lstat, createReadStream, createWriteStream } from 'fs'
+import { lstat, createWriteStream } from 'fs'
 import { collect } from 'catchment'
 import clone from '@wrote/clone'
 import makePromise from 'makepromise'
+import read from '@wrote/read'
 import SnapshotStream from './SnapshotStream'
 
 let TEMP = 'test/temp'
@@ -33,10 +34,8 @@ export default class TempContext {
    * Read a file.
    * @param {string} path Path of the file to read.
    */
-  async read(path) {
-    const rs = createReadStream(path)
-    const res = await collect(rs)
-    return res
+  get read() {
+    return read
   }
   /**
    * Check if the path exists on the filesystem.
@@ -56,8 +55,7 @@ export default class TempContext {
    */
   async readInTemp(path) {
     const p = join(this.TEMP, path)
-    const rs = createReadStream(p)
-    const res = await collect(rs)
+    const res = await this.read(p)
     return res
   }
   /**
@@ -91,22 +89,12 @@ export default class TempContext {
     return clone
   }
   /**
-   * Checks if the path exists.
+   * Capture the contents of the temp directory as a string (or partial contents if the inner path is given).
    */
-  async exists(path) {
-    try {
-      await makePromise(lstat, path)
-      return true
-    } catch (err) {
-      return false
-    }
-  }
-  /**
-   * Capture the contents of the temp directory as a string.
-   */
-  async snapshot() {
+  async snapshot(innerPath = '.') {
+    const p = join(this.TEMP, innerPath)
     /** @type {string} */
-    const s = await getSnapshot(this.TEMP)
+    const s = await getSnapshot(p)
     return s
   }
   /**
