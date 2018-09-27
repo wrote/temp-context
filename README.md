@@ -21,6 +21,7 @@ yarn add -E @wrote/temp-context
   * [`async read(path: string): string`](#async-readpath-string-string)
   * [`async readInTemp(path: string): string`](#async-readintemppath-string-string)
   * [`async write(data: string, path: string): string`](#async-writedata-stringpath-string-string)
+  * [`async exists(path: string): boolean`](#async-existspath-string-boolean)
   * [`async snapshot(): string`](#async-snapshot-string)
   * [static `setTemp`](#static-settemp)
 - [Example](#example)
@@ -72,6 +73,10 @@ Reads the file in the temp directory and returns its contents.
 ### `async write(`<br/>&nbsp;&nbsp;`data: string,`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
 
 Write to the file in the temp directory and returns its path.
+
+### `async exists(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): boolean`
+
+Check if the path exists on the filesystem.
 
 ### `async snapshot(): string`
 

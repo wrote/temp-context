@@ -60,6 +60,14 @@ Reads the file in the temp directory and returns its contents.
 
 Write to the file in the temp directory and returns its path.
 
+```### async exists => boolean
+[
+  ["path", "string"]
+]
+```
+
+Check if the path exists on the filesystem.
+
 ```### async snapshot => string
 ```
 
