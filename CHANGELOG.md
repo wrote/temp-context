@@ -1,3 +1,10 @@
+## 27 September 2018
+
+### 1.2.0
+
+- [feature] Add `exists` method.
+- [fix] Remove and clone symlinks.
+
 ## 20 September 2018
 
 ### 1.1.0
