@@ -39,6 +39,18 @@ export default class TempContext {
     return res
   }
   /**
+   * Check if the path exists on the filesystem.
+   * @param {string} path Path to check.
+   */
+  async exists(path) {
+    try {
+      await makePromise(lstat, path)
+      return true
+    } catch (err) {
+      return false
+    }
+  }
+  /**
    * Read a file relative to the temp directory.
    * @param {string} path Path of the file in the temp directory.
    */
