@@ -1,24 +1,21 @@
-const { join } = require('path');
-let rm = require('@wrote/rm'); if (rm && rm.__esModule) rm = rm.default;
 let ensurePath = require('@wrote/ensure-path'); if (ensurePath && ensurePath.__esModule) ensurePath = ensurePath.default;
-let Pedantry = require('pedantry'); if (Pedantry && Pedantry.__esModule) Pedantry = Pedantry.default;
-const { lstat, createWriteStream } = require('fs');
-const { collect } = require('catchment');
+let rm = require('@wrote/rm'); if (rm && rm.__esModule) rm = rm.default;
 let clone = require('@wrote/clone'); if (clone && clone.__esModule) clone = clone.default;
 let read = require('@wrote/read'); if (read && read.__esModule) read = read.default;
+let write = require('@wrote/write'); if (write && write.__esModule) write = write.default;
+const { join } = require('path');
+const { lstat } = require('fs');
 let makePromise = require('makepromise'); if (makePromise && makePromise.__esModule) makePromise = makePromise.default;
 const { tmpdir } = require('os');
-let SnapshotStream = require('./SnapshotStream'); if (SnapshotStream && SnapshotStream.__esModule) SnapshotStream = SnapshotStream.default;
+const { getSnapshot } = require('./lib');
 
-const getSnapshot = async (path) => {
-  const pedantry = new Pedantry(path, {
-    addBlankLine: true,
-  })
-  const s = new SnapshotStream()
-  pedantry.on('file', f => s.currentFile = f)
-  pedantry.pipe(s)
-  const snapshot = await collect(s)
-  return snapshot
+const exists = async (path) => {
+  try {
+    await makePromise(lstat, path)
+    return true
+  } catch (err) {
+    return false
+  }
 }
 
 /**
@@ -26,7 +23,7 @@ const getSnapshot = async (path) => {
  */
                class TempContext {
   constructor() {
-    this._TEMP = 'test/temp'
+    this._TEMP = join('test', 'temp')
   }
   async _init() {
     const p = this.resolve('t')
@@ -40,7 +37,7 @@ const getSnapshot = async (path) => {
     this._TEMP = join(tmpdir(), name)
   }
   /**
-   * Read a file.
+   * Read a file from the filesystem.
    * @param {string} path Path of the file to read.
    */
   get readGlobal() {
@@ -48,18 +45,23 @@ const getSnapshot = async (path) => {
   }
   /**
    * Check if the path exists on the filesystem.
-   * @param {string} path Path to check.
+   * @param {string} path The path to check.
    */
-  async exists(path) {
-    try {
-      await makePromise(lstat, path)
-      return true
-    } catch (err) {
-      return false
-    }
+  async existsGlobal(path) {
+    const res = await exists(path)
+    return res
   }
   /**
-   * Read a file relative to the temp directory.
+   * Check if the path exists in the temp directory.
+   * @param {string} path The relative path inside of the temp dir to check.
+   */
+  async exists(path) {
+    const p = this.resolve(path)
+    const res = await exists(p)
+    return res
+  }
+  /**
+   * Read a file inside of the temp directory.
    * @param {string} path Path of the file in the temp directory.
    */
   async read(path) {
@@ -68,21 +70,18 @@ const getSnapshot = async (path) => {
     return res
   }
   /**
-   * Write a file in a temp directory.
+   * Write a file in the temp directory.
+   * @param {string|Buffer} path Path to the file within the temp directory.
    * @param {string} data Data to write.
-   * @param {string} path Path to the file within the temp directory.
    */
-  async write(data, path) {
+  async write(path, data) {
     const p = this.resolve(path)
-    const ws = createWriteStream(p)
-    await new Promise((r, j) => {
-      ws.on('error', j).on('close', r).end(data)
-    })
+    await write(p, data)
     return p
   }
   /**
    * Get a path to a file inside of the temp directory.
-   * @param {string} path The path to the file inside of the temp dir.
+   * @param {string} path The relative path to the file inside of the temp dir.
    */
   resolve(path) {
     return join(this.TEMP, path)
@@ -123,7 +122,7 @@ const getSnapshot = async (path) => {
   async snapshot(innerPath = '.') {
     const p = this.resolve(innerPath)
     /** @type {string} */
-    const s = await getSnapshot(p)
+    const s = await getSnapshot(p, innerPath)
     return s
   }
 }
