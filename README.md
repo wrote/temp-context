@@ -30,7 +30,6 @@ yarn add -E @wrote/temp-context
   * [Output](#output)
   * [Autocompletion](#autocompletion)
 - [**Extending**](#extending)
-- [TODO](#todo)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
@@ -111,7 +110,7 @@ const program = (path, data) => {
 export default program
 ```
 
-When writing tests with _Zoroaster_, the project dir will have the `src` and `test` directories:
+When writing tests with _Zoroaster_, the project directory will have the `src` and `test` directories:
 
 ```m
 example
@@ -275,12 +274,6 @@ Temp file location: /var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-tes
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true"></a></p>
-
-## TODO
-
-- [ ] Create `fs` context and extend it.
-- [ ] Test the `read` method.
-- [ ] Show the example output with the terminal.
 
 ## Copyright
 

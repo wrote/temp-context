@@ -4,7 +4,7 @@ _Zoroaster_ tests can be written either as masks, or more traditionally as specs
 
 %EXAMPLE: example/src/index.js%
 
-When writing tests with _Zoroaster_, the project dir will have the `src` and `test` directories:
+When writing tests with _Zoroaster_, the project directory will have the `src` and `test` directories:
 
 %TREE example%
 
