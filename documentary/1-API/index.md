@@ -10,22 +10,13 @@ import tempContext from '@wrote/temp-context'
 
 ## **class `TempContext`**
 
-Instances of this test context class will create a `temp` directory in the `test` folder on initialisation, and remove it at the end of each test. To change the location of the test directory, the static `setTemp` method should be called with a new location.
+Instances of this test context class will create a `temp` directory in the `test` folder on initialisation, and remove it at the end of each test. To change the location of the test directory, [extend the class](#extending).
 
 The test context is used with the _Zoroaster_ testing framework, which will initialise and destroy it for every test. Check the [example](#example) section to see how tests are implemented.
 
 ### get `TEMP`
 
-Returns the path to the temp folder.
-
-```### async clone
-[
-  ["from", "string"],
-  ["to", "boolean"]
-]
-```
-
-Clones a file or directory to the specified location.
+Return the path to the temp folder.
 
 ```### async exists => boolean
 [
@@ -35,21 +26,29 @@ Clones a file or directory to the specified location.
 
 Checks if the path exists.
 
+```### resolve => string
+[
+  ["path", "string"]
+]
+```
+
+Resolve a path inside of the temp directory, e.g., `resolve('data.temp')` will return `test/temp/data.temp`.
+
 ```### async read => string
 [
   ["path", "string"]
 ]
 ```
 
-Reads the file and returns its contents.
+Read the file in the temp directory and returns its contents.
 
-```### async readInTemp => string
+```### async readGlobal => string
 [
   ["path", "string"]
 ]
 ```
 
-Reads the file in the temp directory and returns its contents.
+Read the file given its path and returns its contents. Alias for [`@wrote/read`](https://github.com/wrote/read).
 
 ```### async write => string
 [
@@ -58,23 +57,31 @@ Reads the file in the temp directory and returns its contents.
 ]
 ```
 
-Write to the file in the temp directory and returns its path.
+Write to the file in the temp directory and return its path.
 
-```### async exists => boolean
+```### async clone
+[
+  ["from", "string"],
+  ["to", "boolean"]
+]
+```
+
+Clone a file or directory to the specified location. Alias from [`@wrote/clone`](https://github.com/wrote/clone).
+
+```### async rm
 [
   ["path", "string"]
 ]
 ```
 
-Check if the path exists on the filesystem.
+Remove a file or folder inside of the temp directory. Alias from [`@wrote/clone`](https://github.com/wrote/rm).
 
 ```### async snapshot => string
+[
+  ["innerPath?", "string"]
+]
 ```
 
-Takes a snapshot of the temp directory, which can then be saved (and tested with _Zoroaster_ masks).
-
-### static `setTemp`
-
-Changes the location of the temp directory for each instance of the _TempContent_ class.
+Takes a snapshot of the temp directory, which can then be saved and tested either with _Zoroaster_ masks or [`snapshot-context`](https://github.com/artdecocode/snapshot-context).
 
 %~%

@@ -1,18 +1,17 @@
-import TempContext from '../../../src'
 import { ok, equal } from 'zoroaster/assert'
-import Context from '../context'
+import MyTempContext from '../context/temp'
 import program from '../../src'
 
-/** @type {Object.<string, (c:Context, tc: TempContext)>} */
+/** @type {Object.<string, (tc: MyTempContext)>} */
 const T = {
-  context: [Context, TempContext],
+  context: MyTempContext,
   async 'writes data to a file'(
-    { DATA }, { TEMP, resolve, exists, read },
+    { TEMP, resolve, exists, read, DATA },
   ) {
     await program(TEMP, DATA)
     const j = resolve('.test')
-    console.log('Temp file location: %s', j)
     const e = await exists(j)
+    console.log('Temp file location: %s', j)
     ok(e)
     const res = await read('.test')
     equal(res, `hello world: ${DATA}`)

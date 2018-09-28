@@ -14,7 +14,7 @@ import { getSnapshot } from './lib'
  */
 export default class TempContext {
   constructor() {
-    this._TEMP = 'test/temp'
+    this._TEMP = join('test', 'temp')
   }
   async _init() {
     const p = this.resolve('t')
@@ -67,7 +67,7 @@ export default class TempContext {
   }
   /**
    * Get a path to a file inside of the temp directory.
-   * @param {string} path The path to the file inside of the temp dir.
+   * @param {string} path The relative path to the file inside of the temp dir.
    */
   resolve(path) {
     return join(this.TEMP, path)

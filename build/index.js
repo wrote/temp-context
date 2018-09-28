@@ -5,11 +5,10 @@ let Pedantry = require('pedantry'); if (Pedantry && Pedantry.__esModule) Pedantr
 const { lstat, createWriteStream } = require('fs');
 const { collect } = require('catchment');
 let clone = require('@wrote/clone'); if (clone && clone.__esModule) clone = clone.default;
-let makePromise = require('makepromise'); if (makePromise && makePromise.__esModule) makePromise = makePromise.default;
 let read = require('@wrote/read'); if (read && read.__esModule) read = read.default;
+let makePromise = require('makepromise'); if (makePromise && makePromise.__esModule) makePromise = makePromise.default;
+const { tmpdir } = require('os');
 let SnapshotStream = require('./SnapshotStream'); if (SnapshotStream && SnapshotStream.__esModule) SnapshotStream = SnapshotStream.default;
-
-let TEMP = 'test/temp'
 
 const getSnapshot = async (path) => {
   const pedantry = new Pedantry(path, {
@@ -23,18 +22,28 @@ const getSnapshot = async (path) => {
 }
 
 /**
- * A test context that creates and destroys a temp directory. By default, the temp directory will be `test/temp` relative to the current working directory, but it can be changed with `setTemp` method.
+ * A test context that creates and destroys a temp directory. By default, the temp directory will be `test/temp` relative to the current working directory, but it can be changed by extending the class and setting its `TEMP` property in the constructor.
  */
                class TempContext {
+  constructor() {
+    this._TEMP = 'test/temp'
+  }
   async _init() {
-    const p = join(TEMP, 'temp')
+    const p = this.resolve('t')
     await ensurePath(p)
+  }
+  /**
+   * This method should be called in the constructor by classes that extend the `TempContext` to use the temp directory of the os system.
+   * @param {string} name The name of the directory inside of the temp dir.
+   */
+  _useOSTemp(name) {
+    this._TEMP = join(tmpdir(), name)
   }
   /**
    * Read a file.
    * @param {string} path Path of the file to read.
    */
-  get read() {
+  get readGlobal() {
     return read
   }
   /**
@@ -53,9 +62,9 @@ const getSnapshot = async (path) => {
    * Read a file relative to the temp directory.
    * @param {string} path Path of the file in the temp directory.
    */
-  async readInTemp(path) {
-    const p = join(this.TEMP, path)
-    const res = await this.read(p)
+  async read(path) {
+    const p = this.resolve(path)
+    const res = await read(p)
     return res
   }
   /**
@@ -64,7 +73,7 @@ const getSnapshot = async (path) => {
    * @param {string} path Path to the file within the temp directory.
    */
   async write(data, path) {
-    const p = join(this.TEMP, path)
+    const p = this.resolve(path)
     const ws = createWriteStream(p)
     await new Promise((r, j) => {
       ws.on('error', j).on('close', r).end(data)
@@ -72,13 +81,31 @@ const getSnapshot = async (path) => {
     return p
   }
   /**
+   * Get a path to a file inside of the temp directory.
+   * @param {string} path The path to the file inside of the temp dir.
+   */
+  resolve(path) {
+    return join(this.TEMP, path)
+  }
+  /**
    * Path to the temp directory.
    */
   get TEMP() {
-    return TEMP
+    return this._TEMP
+  }
+  set TEMP(val) {
+    this._TEMP = val
   }
   async _destroy() {
-    await rm(TEMP)
+    await rm(this.TEMP)
+  }
+  /**
+   * Remove a file inside of the temp directory.
+   * @param {string} path The path of the file to remove.
+   */
+  async rm(path) {
+    const p = this.resolve(path)
+    await rm(p)
   }
   /**
    * Clone a file or directory.
@@ -90,19 +117,14 @@ const getSnapshot = async (path) => {
   }
   /**
    * Capture the contents of the temp directory as a string (or partial contents if the inner path is given).
+   * @param {string} innerPath Path inside of the temp dir to snapshot.
+   * @todo add the ignore option
    */
   async snapshot(innerPath = '.') {
-    const p = join(this.TEMP, innerPath)
+    const p = this.resolve(innerPath)
     /** @type {string} */
     const s = await getSnapshot(p)
     return s
-  }
-  /**
-   * Sets a path for any instances of the `TempContext`.
-   * @param {string} path Path to the new temp directory.
-   */
-  static setTemp(path) {
-    TEMP = path
   }
 }
 

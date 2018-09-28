@@ -1,4 +1,4 @@
-## Example
+## **Example**
 
 _Zoroaster_ tests can be written either as masks, or more traditionally as specs. For example, a program might want to write given data to a file in a specified directory, as so:
 
@@ -22,7 +22,9 @@ Now when run, `zoroaster` will use the mask test suite (generated with the `make
 
 ### Specs
 
-Occasionally, there are times when masks are not flexible enough to run tests (although, this should rarely happen because there is a potential to write any tests with standard `makeTestSuite` function). Specs are individual test cases, and can access test contexts assigned to the `context` property of a test suite.
+<!-- (although, this should rarely happen because there is a potential to write any tests with standard `makeTestSuite` function) -->
+
+Occasionally, there are times when masks are not flexible enough to run tests. Specs are individual test cases, and can access test contexts assigned to the `context` property of a test suite.
 
 %EXAMPLE: example/test/spec/default.js, ../../../src => temp-context%
 
@@ -30,7 +32,7 @@ Occasionally, there are times when masks are not flexible enough to run tests (a
 
 The outcome of all the above tests can be achieved with `zoroaster -a example/test/spec example/test/mask` command, where `-a` is used to require [`alamode`](https://alamode.cc) -- a fast RegExp-based transpiler of `import` and `export` statements.
 
-%FORK node_modules/.bin/zoroaster example/test/spec example/test/mask -a%
+%FORK node_modules/.bin/zoroaster example/test/spec/default.js example/test/mask -a%
 
 ### Autocompletion
 
