@@ -11,8 +11,9 @@ const ts = makeTestSuite('test/result/exists.md', {
    */
   async getResults(input, { exists }) {
     const s = await exists(input)
-    return `${s}`
+    return s
   },
+  jsonProps: ['expected'],
   context: TempContext,
 })
 

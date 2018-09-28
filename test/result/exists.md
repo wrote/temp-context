@@ -1,5 +1,5 @@
 // returns true when file exists
-test/fixture/test.txt
+test/fixture/dir/1.md
 
 /* expected */
 true
