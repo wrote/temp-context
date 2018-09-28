@@ -1,8 +1,8 @@
-# @wrote/temp-context
+# temp-context
 
-[![npm version](https://badge.fury.io/js/%40wrote%2Ftemp-context.svg)](https://npmjs.org/package/@wrote/temp-context)
+[![npm version](https://badge.fury.io/js/temp-context.svg)](https://npmjs.org/package/temp-context)
 
-`@wrote/temp-context` is a test context to create and erase temp directories.
+`temp-context` is a [_Zoroaster_](https://github.com/artdecocode/zoroaster) test context to initialise a temporary directory for each test, and remove it at the end. It also contains methods to read, write, clone, assert existence and remove files inside and outside of the temp dir.
 
 ```sh
 yarn add -E @wrote/temp-context
