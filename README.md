@@ -17,6 +17,7 @@ yarn add -E @wrote/temp-context
 - [**class `TempContext`**](#class-tempcontext)
   * [get `TEMP`](#get-temp)
   * [`async exists(path: string): boolean`](#async-existspath-string-boolean)
+  * [`async existsGlobal(path: string): boolean`](#async-existsglobalpath-string-boolean)
   * [`resolve(path: string): string`](#resolvepath-string-string)
   * [`async read(path: string): string`](#async-readpath-string-string)
   * [`async readGlobal(path: string): string`](#async-readglobalpath-string-string)
@@ -56,7 +57,11 @@ Return the path to the temp folder.
 
 ### `async exists(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): boolean`
 
-Checks if the path exists.
+Check if the path exists in the temp directory.
+
+### `async existsGlobal(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): boolean`
+
+Check if the path exists on the filesystem.
 
 ### `resolve(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
 
@@ -76,11 +81,11 @@ Write to the file in the temp directory and return its path.
 
 ### `async clone(`<br/>&nbsp;&nbsp;`from: string,`<br/>&nbsp;&nbsp;`to: boolean,`<br/>`): void`
 
-Clone a file or directory to the specified location. Alias from [`@wrote/clone`](https://github.com/wrote/clone).
+Clone a file or directory to the specified location. Alias for [`@wrote/clone`](https://github.com/wrote/clone).
 
 ### `async rm(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): void`
 
-Remove a file or folder inside of the temp directory. Alias from [`@wrote/clone`](https://github.com/wrote/rm).
+Remove a file or folder inside of the temp directory. Alias for [`@wrote/rm`](https://github.com/wrote/rm).
 
 ### `async snapshot(`<br/>&nbsp;&nbsp;`innerPath?: string,`<br/>`): string`
 
@@ -209,12 +214,18 @@ The outcome of all the above tests can be achieved with `zoroaster -a example/te
 ```
 example/test/spec/default.js
 Temp file location: test/temp/.test
- [32m ✓ [0m writes data to a file
+ [31m ✗ [0m writes data to a file
+  | AssertionError [ERR_ASSERTION]: false == true
+  |     at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/default.js:17:5)
  example/test/mask
    index.md
    [32m ✓ [0m creates a file in the temp directory
 
-🦅  Executed 2 tests.
+[31mexample/test/spec/default.js > writes data to a file[0m
+  AssertionError [ERR_ASSERTION]: false == true
+      at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/default.js:17:5)
+
+🦅  Executed 2 tests: 1 error.
 ```
 
 ### Autocompletion
@@ -270,9 +281,15 @@ export default T
 ```
 example/test/spec/extended.js
 Temp file location: /var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-test/.test
- [32m ✓ [0m writes data to a file
+ [31m ✗ [0m writes data to a file
+  | AssertionError [ERR_ASSERTION]: false == true
+  |     at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/extended.js:16:5)
 
-🦅  Executed 1 tests.
+[31mexample/test/spec/extended.js > writes data to a file[0m
+  AssertionError [ERR_ASSERTION]: false == true
+      at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/extended.js:16:5)
+
+🦅  Executed 1 tests: 1 error.
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true"></a></p>

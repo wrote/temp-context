@@ -24,7 +24,15 @@ Return the path to the temp folder.
 ]
 ```
 
-Checks if the path exists.
+Check if the path exists in the temp directory.
+
+```### async existsGlobal => boolean
+[
+  ["path", "string"]
+]
+```
+
+Check if the path exists on the filesystem.
 
 ```### resolve => string
 [
@@ -66,7 +74,7 @@ Write to the file in the temp directory and return its path.
 ]
 ```
 
-Clone a file or directory to the specified location. Alias from [`@wrote/clone`](https://github.com/wrote/clone).
+Clone a file or directory to the specified location. Alias for [`@wrote/clone`](https://github.com/wrote/clone).
 
 ```### async rm
 [
@@ -74,7 +82,7 @@ Clone a file or directory to the specified location. Alias from [`@wrote/clone`]
 ]
 ```
 
-Remove a file or folder inside of the temp directory. Alias from [`@wrote/clone`](https://github.com/wrote/rm).
+Remove a file or folder inside of the temp directory. Alias for [`@wrote/rm`](https://github.com/wrote/rm).
 
 ```### async snapshot => string
 [

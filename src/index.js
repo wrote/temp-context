@@ -9,6 +9,15 @@ import makePromise from 'makepromise'
 import { tmpdir } from 'os'
 import { getSnapshot } from './lib'
 
+const exists = async (path) => {
+  try {
+    await makePromise(lstat, path)
+    return true
+  } catch (err) {
+    return false
+  }
+}
+
 /**
  * A test context that creates and destroys a temp directory. By default, the temp directory will be `test/temp` relative to the current working directory, but it can be changed by extending the class and setting its `TEMP` property in the constructor.
  */
@@ -36,15 +45,20 @@ export default class TempContext {
   }
   /**
    * Check if the path exists on the filesystem.
-   * @param {string} path Path to check.
+   * @param {string} path The path to check.
+   */
+  async existsGlobal(path) {
+    const res = await exists(path)
+    return res
+  }
+  /**
+   * Check if the path exists in the temp directory.
+   * @param {string} path The relative path inside of the temp dir to check.
    */
   async exists(path) {
-    try {
-      await makePromise(lstat, path)
-      return true
-    } catch (err) {
-      return false
-    }
+    const p = this.resolve(path)
+    const res = await exists(p)
+    return res
   }
   /**
    * Read a file inside of the temp directory.
