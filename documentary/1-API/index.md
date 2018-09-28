@@ -18,6 +18,14 @@ The test context is used with the _Zoroaster_ testing framework, which will init
 
 Return the path to the temp folder.
 
+```### resolve => string
+[
+  ["path", "string"]
+]
+```
+
+Resolve a path inside of the temp directory, e.g., `resolve('data.temp')` will return `test/temp/data.temp`.
+
 ```### async exists => boolean
 [
   ["path", "string"]
@@ -33,14 +41,6 @@ Check if the path exists in the temp directory.
 ```
 
 Check if the path exists on the filesystem.
-
-```### resolve => string
-[
-  ["path", "string"]
-]
-```
-
-Resolve a path inside of the temp directory, e.g., `resolve('data.temp')` will return `test/temp/data.temp`.
 
 ```### async read => string
 [

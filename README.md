@@ -16,9 +16,9 @@ yarn add -E @wrote/temp-context
 - [API](#api)
 - [**class `TempContext`**](#class-tempcontext)
   * [get `TEMP`](#get-temp)
+  * [`resolve(path: string): string`](#resolvepath-string-string)
   * [`async exists(path: string): boolean`](#async-existspath-string-boolean)
   * [`async existsGlobal(path: string): boolean`](#async-existsglobalpath-string-boolean)
-  * [`resolve(path: string): string`](#resolvepath-string-string)
   * [`async read(path: string): string`](#async-readpath-string-string)
   * [`async readGlobal(path: string): string`](#async-readglobalpath-string-string)
   * [`async write(data: string, path: string): string`](#async-writedata-stringpath-string-string)
@@ -55,6 +55,10 @@ The test context is used with the _Zoroaster_ testing framework, which will init
 
 Return the path to the temp folder.
 
+### `resolve(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
+
+Resolve a path inside of the temp directory, e.g., `resolve('data.temp')` will return `test/temp/data.temp`.
+
 ### `async exists(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): boolean`
 
 Check if the path exists in the temp directory.
@@ -62,10 +66,6 @@ Check if the path exists in the temp directory.
 ### `async existsGlobal(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): boolean`
 
 Check if the path exists on the filesystem.
-
-### `resolve(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
-
-Resolve a path inside of the temp directory, e.g., `resolve('data.temp')` will return `test/temp/data.temp`.
 
 ### `async read(`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
 
