@@ -3,7 +3,7 @@
 The package is available by importing its default function:
 
 ```js
-import tempContext from '@wrote/temp-context'
+import TempContext from 'temp-context'
 ```
 
 %~%

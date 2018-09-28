@@ -5,7 +5,7 @@
 `temp-context` is a [_Zoroaster_](https://github.com/artdecocode/zoroaster) test context to initialise a temporary directory for each test, and remove it at the end. It also contains methods to read, write, clone, assert existence and remove files inside and outside of the temp dir.
 
 ```sh
-yarn add -E @wrote/temp-context
+yarn add -E temp-context
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
@@ -40,7 +40,7 @@ yarn add -E @wrote/temp-context
 The package is available by importing its default function:
 
 ```js
-import tempContext from '@wrote/temp-context'
+import TempContext from 'temp-context'
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
