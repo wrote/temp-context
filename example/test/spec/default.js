@@ -12,6 +12,7 @@ const T = {
     await program(TEMP, DATA)
     const j = resolve('.test')
     console.log('Temp file location: %s', j)
+
     const e = await exists(j)
     ok(e)
     const res = await read('.test')
