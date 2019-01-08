@@ -1,5 +1,5 @@
 let Pedantry = require('pedantry'); if (Pedantry && Pedantry.__esModule) Pedantry = Pedantry.default;
-let SnapshotStream = require('./SnapshotStream'); if (SnapshotStream && SnapshotStream.__esModule) SnapshotStream = SnapshotStream.default;
+const SnapshotStream = require('./SnapshotStream');
 const { lstat, createReadStream } = require('fs');
 const { collect } = require('catchment');
 let makePromise = require('makepromise'); if (makePromise && makePromise.__esModule) makePromise = makePromise.default;

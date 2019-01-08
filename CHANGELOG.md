@@ -6,8 +6,6 @@
 - [feature] (breaking) Prefer relative file methods (e.g., `read` means read in temp directory and `readGlobal` means read on the filesystem) and add some new methods.
 - [feature] Snapshot a file.
 
-## 28 September 2018
-
 ### 1.3.0
 
 - [feature] Partial snapshot.
