@@ -35,6 +35,18 @@ const T = {
 
 dir2-1.txt`)
   },
+  async 'adds a dir'({ add, TEMP }, { DIR }) {
+    const res = await add(DIR)
+    equal(res, join(TEMP, 'dir'))
+    const s = await makePromise(lstat, res)
+    ok(s.isDirectory())
+  },
+  async 'adds a file'({ add, TEMP }, { FIXTURE }) {
+    const res = await add(FIXTURE)
+    equal(res, join(TEMP, 'test.txt'))
+    const s = await makePromise(lstat, res)
+    ok(s.isFile())
+  },
 }
 
 /** @type {Object.<string, (c: Context)>} */

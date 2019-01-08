@@ -3,7 +3,7 @@ import rm from '@wrote/rm'
 import clone from '@wrote/clone'
 import read from '@wrote/read'
 import write from '@wrote/write'
-import { join } from 'path'
+import { join, basename } from 'path'
 import { lstat, realpathSync } from 'fs'
 import makePromise from 'makepromise'
 import { tmpdir } from 'os'
@@ -114,6 +114,15 @@ export default class TempContext {
    */
   get clone() {
     return clone
+  }
+  /**
+   * Adds a file or directory to the temp directory and returns its new path.
+   * @param {string} target The path to the file or directory to add to the temp directory.
+   */
+  async add(target) {
+    await clone(target, this.TEMP)
+    const b = basename(target)
+    return this.resolve(b)
   }
   /**
    * Capture the contents of the temp directory as a string (or partial contents if the inner path is given).
