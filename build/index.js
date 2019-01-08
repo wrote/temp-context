@@ -3,7 +3,7 @@ let rm = require('@wrote/rm'); if (rm && rm.__esModule) rm = rm.default;
 let clone = require('@wrote/clone'); if (clone && clone.__esModule) clone = clone.default;
 let read = require('@wrote/read'); if (read && read.__esModule) read = read.default;
 let write = require('@wrote/write'); if (write && write.__esModule) write = write.default;
-const { join } = require('path');
+const { join, basename } = require('path');
 const { lstat, realpathSync } = require('fs');
 let makePromise = require('makepromise'); if (makePromise && makePromise.__esModule) makePromise = makePromise.default;
 const { tmpdir } = require('os');
@@ -114,6 +114,15 @@ const exists = async (path) => {
    */
   get clone() {
     return clone
+  }
+  /**
+   * Adds a file or directory to the temp directory and returns its new path.
+   * @param {string} target The path to the file or directory to add to the temp directory.
+   */
+  async add(target) {
+    await clone(target, this.TEMP)
+    const b = basename(target)
+    return this.resolve(b)
   }
   /**
    * Capture the contents of the temp directory as a string (or partial contents if the inner path is given).
