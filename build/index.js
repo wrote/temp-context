@@ -4,7 +4,7 @@ let clone = require('@wrote/clone'); if (clone && clone.__esModule) clone = clon
 let read = require('@wrote/read'); if (read && read.__esModule) read = read.default;
 let write = require('@wrote/write'); if (write && write.__esModule) write = write.default;
 const { join } = require('path');
-const { lstat } = require('fs');
+const { lstat, realpathSync } = require('fs');
 let makePromise = require('makepromise'); if (makePromise && makePromise.__esModule) makePromise = makePromise.default;
 const { tmpdir } = require('os');
 const { getSnapshot } = require('./lib');
@@ -34,7 +34,8 @@ const exists = async (path) => {
    * @param {string} name The name of the directory inside of the temp dir.
    */
   _useOSTemp(name) {
-    this._TEMP = join(tmpdir(), name)
+    const t = realpathSync(tmpdir())
+    this._TEMP = join(t, name)
   }
   /**
    * Read a file from the filesystem.
@@ -128,4 +129,3 @@ const exists = async (path) => {
 }
 
 module.exports = TempContext
-//# sourceMappingURL=index.js.map

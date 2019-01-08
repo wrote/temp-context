@@ -26,4 +26,3 @@ let makePromise = require('makepromise'); if (makePromise && makePromise.__esMod
 }
 
 module.exports.getSnapshot = getSnapshot
-//# sourceMappingURL=index.js.map

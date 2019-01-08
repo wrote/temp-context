@@ -25,4 +25,3 @@ const { Transform } = require('stream');
 }
 
 module.exports = SnapshotStream
-//# sourceMappingURL=SnapshotStream.js.map
