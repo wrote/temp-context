@@ -67,6 +67,14 @@ Read the file given its path and returns its contents. Alias for [`@wrote/read`]
 
 Write to the file in the temp directory and return its path.
 
+```### async add => string
+[
+  ["target", "string"]
+]
+```
+
+Adds a file or directory to the temp directory and returns its new path.
+
 ```### async clone
 [
   ["from", "string"],

@@ -22,6 +22,7 @@ yarn add -E temp-context
   * [`async read(path: string): string`](#async-readpath-string-string)
   * [`async readGlobal(path: string): string`](#async-readglobalpath-string-string)
   * [`async write(data: string, path: string): string`](#async-writedata-stringpath-string-string)
+  * [`async add(target: string): string`](#async-addtarget-string-string)
   * [`async clone(from: string, to: boolean)`](#async-clonefrom-stringto-boolean-void)
   * [`async rm(path: string)`](#async-rmpath-string-void)
   * [`async snapshot(innerPath?: string): string`](#async-snapshotinnerpath-string-string)
@@ -78,6 +79,10 @@ Read the file given its path and returns its contents. Alias for [`@wrote/read`]
 ### `async write(`<br/>&nbsp;&nbsp;`data: string,`<br/>&nbsp;&nbsp;`path: string,`<br/>`): string`
 
 Write to the file in the temp directory and return its path.
+
+### `async add(`<br/>&nbsp;&nbsp;`target: string,`<br/>`): string`
+
+Adds a file or directory to the temp directory and returns its new path.
 
 ### `async clone(`<br/>&nbsp;&nbsp;`from: string,`<br/>&nbsp;&nbsp;`to: boolean,`<br/>`): void`
 
@@ -289,7 +294,7 @@ Temp file location: /private/var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/pac
   AssertionError [ERR_ASSERTION]: false == true
       at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/extended.js:16:5)
 
-🦅  Executed 1 tests: 1 error.
+🦅  Executed 1 test: 1 error.
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true"></a></p>
