@@ -280,7 +280,7 @@ export default T
 ```
 ```
 example/test/spec/extended.js
-Temp file location: /var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-test/.test
+Temp file location: /private/var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-test/.test
  [31m ✗ [0m writes data to a file
   | AssertionError [ERR_ASSERTION]: false == true
   |     at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/extended.js:16:5)
@@ -296,7 +296,7 @@ Temp file location: /var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-tes
 
 ## Copyright
 
-(c) [Wrote][1] 2018
+(c) [Wrote][1] 2019
 
 [1]: https://wrote.cc
 
