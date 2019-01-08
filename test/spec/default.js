@@ -1,6 +1,6 @@
 import { equal, ok } from 'zoroaster/assert'
 import makePromise from 'makepromise'
-import { lstat } from 'fs'
+import { lstat, realpathSync } from 'fs'
 import { tmpdir } from 'os'
 import { join } from 'path'
 import TempContext from '../../src'
@@ -61,7 +61,7 @@ const manual = {
       }
     }
     const e = new E()
-    const j = join(tmpdir(), n)
+    const j = join(realpathSync(tmpdir()), n)
     equal(e.TEMP, j)
     await e._init()
     const e1 = await exists(j)

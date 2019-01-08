@@ -4,7 +4,7 @@ import clone from '@wrote/clone'
 import read from '@wrote/read'
 import write from '@wrote/write'
 import { join } from 'path'
-import { lstat } from 'fs'
+import { lstat, realpathSync } from 'fs'
 import makePromise from 'makepromise'
 import { tmpdir } from 'os'
 import { getSnapshot } from './lib'
@@ -34,7 +34,8 @@ export default class TempContext {
    * @param {string} name The name of the directory inside of the temp dir.
    */
   _useOSTemp(name) {
-    this._TEMP = join(tmpdir(), name)
+    const t = realpathSync(tmpdir())
+    this._TEMP = join(t, name)
   }
   /**
    * Read a file from the filesystem.
