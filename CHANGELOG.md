@@ -1,3 +1,10 @@
+## 8 Jan 2019
+
+### 2.1.0
+
+- [feature] Implement `add` method to place a file or directory in the temp folder.
+- [fix] Resolve the real path to the OS temp in `_useOSTemp` (as on MacOs, `os.tmpdir()` returns a symlink).
+
 ## 28 September 2018
 
 ### 2.0.0
