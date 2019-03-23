@@ -16,7 +16,7 @@ To implement tests with masks, a mask implementation should be set up in the `ma
 
 The results file which contains data about how input should be mapped to the output is saved in the `results` directory:
 
-%EXAMPLE: example/test/result/index.md%
+%EXAMPLE: example/test/result/default.md%
 
 Now when run, `zoroaster` will use the mask test suite (generated with the `makeTestSuite` function) to check that inputs match expected outputs.
 

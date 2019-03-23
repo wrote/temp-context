@@ -133,7 +133,7 @@ example
     ├── mask
     │   └── default.js
     ├── result
-    │   └── index.md
+    │   └── default.md
     └── spec
         ├── default.js
         └── extended.js
@@ -144,14 +144,14 @@ example
 To implement tests with masks, a mask implementation should be set up in the `mask` directory:
 
 ```js
-import { makeTestSuite } from 'zoroaster'
+import makeTestSuite from '@zoroaster/mask'
 import TempContext from 'temp-context'
 import program from '../../src'
 
 /**
  * This test suite will clone an input and take a snapshot of the temp directory.
  */
-const ts = makeTestSuite('example/test/result', {
+export default makeTestSuite('example/test/result', {
   /**
    * @param {string} input
    * @param {TempContext} context
@@ -163,14 +163,12 @@ const ts = makeTestSuite('example/test/result', {
   },
   context: TempContext,
 })
-
-export default ts
 ```
 
 The results file which contains data about how input should be mapped to the output is saved in the `results` directory:
 
 ```md
-// creates a file in the temp directory
+## creates a file in the temp directory
 input data
 
 /* expected */
@@ -219,14 +217,13 @@ The outcome of all the above tests can be achieved with `zoroaster -a example/te
 ```
 example/test/spec/default.js
 Temp file location: test/temp/.test
- [31m ✗ [0m writes data to a file
+  ✗  writes data to a file
   | AssertionError [ERR_ASSERTION]: false == true
   |     at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/default.js:17:5)
  example/test/mask
-   index.md
-   [32m ✓ [0m creates a file in the temp directory
+  ✓  creates a file in the temp directory
 
-[31mexample/test/spec/default.js > writes data to a file[0m
+example/test/spec/default.js > writes data to a file
   AssertionError [ERR_ASSERTION]: false == true
       at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/default.js:17:5)
 
@@ -286,11 +283,11 @@ export default T
 ```
 example/test/spec/extended.js
 Temp file location: /private/var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-test/.test
- [31m ✗ [0m writes data to a file
+  ✗  writes data to a file
   | AssertionError [ERR_ASSERTION]: false == true
   |     at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/extended.js:16:5)
 
-[31mexample/test/spec/extended.js > writes data to a file[0m
+example/test/spec/extended.js > writes data to a file
   AssertionError [ERR_ASSERTION]: false == true
       at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/extended.js:16:5)
 
