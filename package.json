@@ -48,20 +48,20 @@
   },
   "homepage": "https://github.com/wrote/temp-context#readme",
   "devDependencies": {
-    "alamode": "1.6.1",
-    "documentary": "1.20.1",
+    "alamode": "1.8.6",
+    "documentary": "1.22.0",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.6.6"
+    "zoroaster": "3.10.0"
   },
   "dependencies": {
     "@wrote/clone": "1.1.0",
-    "@wrote/ensure-path": "1.0.3",
-    "@wrote/read": "1.0.0",
-    "@wrote/rm": "1.1.0",
-    "@wrote/write": "1.0.0",
-    "catchment": "3.2.0",
-    "makepromise": "3.0.1",
+    "@wrote/ensure-path": "1.0.5",
+    "@wrote/read": "1.0.2",
+    "@wrote/rm": "1.1.2",
+    "@wrote/write": "1.0.2",
+    "catchment": "3.2.2",
+    "makepromise": "3.0.2",
     "pedantry": "2.2.0"
   }
 }

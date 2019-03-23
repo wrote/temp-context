@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import makePromise from 'makepromise'
 import { lstat } from 'fs'
 
@@ -27,5 +27,9 @@ export default class Context {
    */
   get DIR() {
     return resolve(FIXTURE, 'dir')
+  }
+  async lstat(...args) {
+    const s = await makePromise(lstat, join(...args))
+    return s
   }
 }

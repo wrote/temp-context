@@ -1,6 +1,5 @@
 import { equal, ok } from 'zoroaster/assert'
-import makePromise from 'makepromise'
-import { lstat, realpathSync } from 'fs'
+import { realpathSync } from 'fs'
 import { tmpdir } from 'os'
 import { join } from 'path'
 import TempContext from '../../src'
@@ -12,21 +11,28 @@ const T = {
   'is a function'() {
     equal(typeof TempContext, 'function')
   },
-  async 'creates a temp directory'({ TEMP }) {
-    const s = await makePromise(lstat, TEMP)
+  async 'creates a temp directory'({ TEMP }, { lstat }) {
+    const s = await lstat(TEMP)
     ok(s.isDirectory())
   },
-  async 'writes a file'({ TEMP, write, read, readGlobal }) {
+  async 'writes a file'({ TEMP, write, read, readGlobal }, { lstat }) {
     const p = 'data.temp'
     const d = 'hello-world'
     const pp = await write(p, d)
     equal(pp, join(TEMP, p))
-    const s = await makePromise(lstat, join(TEMP, p))
+    const s = await lstat(TEMP, p)
     ok(s.isFile())
     const r = await read(p)
     equal(r, d)
     const r2 = await readGlobal(pp)
     equal(r2, d)
+  },
+  async '!ensures the path'({ TEMP, write }, { lstat }) {
+    const p = 'path/data.temp'
+    const d = 'hello-world'
+    await write(p, d)
+    const s = await lstat(TEMP, p)
+    ok(s.isFile())
   },
   async 'partial snapshot'({ TEMP, clone, snapshot }, { DIR }) {
     await clone(DIR, TEMP)
@@ -35,16 +41,21 @@ const T = {
 
 dir2-1.txt`)
   },
-  async 'adds a dir'({ add, TEMP }, { DIR }) {
+  async '!partial snapshot of a file'({ TEMP, clone, snapshot }, { DIR }) {
+    await clone(DIR, TEMP)
+    const s = await snapshot('dir/dir2/1.txt')
+    equal(s, 'dir2-1.txt')
+  },
+  async 'adds a dir'({ add, TEMP }, { DIR, lstat }) {
     const res = await add(DIR)
     equal(res, join(TEMP, 'dir'))
-    const s = await makePromise(lstat, res)
+    const s = await lstat(res)
     ok(s.isDirectory())
   },
-  async 'adds a file'({ add, TEMP }, { FIXTURE }) {
+  async 'adds a file'({ add, TEMP }, { FIXTURE, lstat }) {
     const res = await add(FIXTURE)
     equal(res, join(TEMP, 'test.txt'))
-    const s = await makePromise(lstat, res)
+    const s = await lstat(res)
     ok(s.isFile())
   },
 }

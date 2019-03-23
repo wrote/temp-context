@@ -77,6 +77,7 @@ export default class TempContext {
    */
   async write(path, data) {
     const p = this.resolve(path)
+    await ensurePath(p)
     await write(p, data)
     return p
   }
