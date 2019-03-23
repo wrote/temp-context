@@ -214,7 +214,7 @@ export default T
 
 The outcome of all the above tests can be achieved with `zoroaster -a example/test/spec example/test/mask` command, where `-a` is used to require [`alamode`](https://alamode.cc) -- a fast RegExp-based transpiler of `import` and `export` statements.
 
-```
+```fs
 example/test/spec/default.js
 Temp file location: test/temp/.test
   ✗  writes data to a file
@@ -280,7 +280,7 @@ const T = {
 
 export default T
 ```
-```
+```fs
 example/test/spec/extended.js
 Temp file location: /private/var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-test/.test
   ✗  writes data to a file

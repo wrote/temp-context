@@ -5,6 +5,6 @@ Extending the `TempContext` allows to set the specific temp directory location, 
 %EXAMPLE: example/test/context/temp.js, ../../../src => temp-context%
 
 %EXAMPLE: example/test/spec/extended.js%
-%FORK node_modules/.bin/zoroaster example/test/spec/extended.js -a%
+%FORK-fs node_modules/.bin/zoroaster example/test/spec/extended.js -a%
 
 %~%

@@ -32,7 +32,7 @@ Occasionally, there are times when masks are not flexible enough to run tests. S
 
 The outcome of all the above tests can be achieved with `zoroaster -a example/test/spec example/test/mask` command, where `-a` is used to require [`alamode`](https://alamode.cc) -- a fast RegExp-based transpiler of `import` and `export` statements.
 
-%FORK node_modules/.bin/zoroaster example/test/spec/default.js example/test/mask -a%
+%FORK-fs node_modules/.bin/zoroaster example/test/spec/default.js example/test/mask -a%
 
 ### Autocompletion
 
