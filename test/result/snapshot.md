@@ -1,4 +1,4 @@
-// snapshots a file
+## snapshots a file
 dir/1.md
 
 /* expected */
@@ -7,7 +7,7 @@ dir/1.md
 dir-1.md
 /**/
 
-// snapshots a directory
+## snapshots a directory
 .
 
 /* expected */
@@ -24,7 +24,7 @@ dir-2.md
 dir2-1.txt
 /**/
 
-// snapshots an inner directory
+## snapshots an inner directory
 dir
 
 /* expected */

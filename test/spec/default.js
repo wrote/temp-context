@@ -27,7 +27,7 @@ const T = {
     const r2 = await readGlobal(pp)
     equal(r2, d)
   },
-  async '!ensures the path'({ TEMP, write }, { lstat }) {
+  async 'ensures the path'({ TEMP, write }, { lstat }) {
     const p = 'path/data.temp'
     const d = 'hello-world'
     await write(p, d)
@@ -40,11 +40,6 @@ const T = {
     equal(s, `# 1.txt
 
 dir2-1.txt`)
-  },
-  async '!partial snapshot of a file'({ TEMP, clone, snapshot }, { DIR }) {
-    await clone(DIR, TEMP)
-    const s = await snapshot('dir/dir2/1.txt')
-    equal(s, 'dir2-1.txt')
   },
   async 'adds a dir'({ add, TEMP }, { DIR, lstat }) {
     const res = await add(DIR)
