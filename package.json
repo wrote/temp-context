@@ -52,7 +52,7 @@
     "documentary": "1.22.0",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.10.0"
+    "zoroaster": "3.11.1"
   },
   "dependencies": {
     "@wrote/clone": "1.1.0",
