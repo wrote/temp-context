@@ -282,7 +282,7 @@ export default T
 ```
 ```fs
 example/test/spec/extended.js
-Temp file location: /private/var/folders/sv/4z6rm3dj38588dwj1pgz04580000gn/T/package-test/.test
+Temp file location: /private/tmp/package-test/.test
   ✗  writes data to a file
   | AssertionError [ERR_ASSERTION]: false == true
   |     at writes data to a file (/Users/zavr/wrote/temp-context/example/test/spec/extended.js:16:5)
