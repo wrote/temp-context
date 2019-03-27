@@ -1,3 +1,9 @@
+## 27 March 2019
+
+### [2.1.1](https://github.com/wrote/temp-context/compare/v2.1.0...v2.1.1)
+
+- [fix] Ensure the path exists for writing.
+
 ## 8 Jan 2019
 
 ### 2.1.0
