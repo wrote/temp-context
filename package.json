@@ -1,6 +1,6 @@
 {
   "name": "temp-context",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Test Context To Initialise Temporary Directory For Each Test, And Remove It At The End. It Contains Methods To Read, Write, Clone, Assert Existence And Remove Files Inside And Outside Of Temp Dir.",
   "main": "build",
   "scripts": {
