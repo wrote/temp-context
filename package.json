@@ -48,11 +48,11 @@
   },
   "homepage": "https://github.com/wrote/temp-context#readme",
   "devDependencies": {
-    "alamode": "1.8.6",
-    "documentary": "1.22.0",
+    "alamode": "1.9.0",
+    "documentary": "1.23.2",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.11.1"
+    "zoroaster": "3.11.2"
   },
   "dependencies": {
     "@wrote/clone": "1.1.0",
@@ -62,6 +62,6 @@
     "@wrote/write": "1.0.2",
     "catchment": "3.2.2",
     "makepromise": "3.0.2",
-    "pedantry": "2.2.0"
+    "pedantry": "2.3.1"
   }
 }

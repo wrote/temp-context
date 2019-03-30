@@ -2,7 +2,7 @@
 
 _Zoroaster_ tests can be written either as masks, or more traditionally as specs. For example, a program might want to write given data to a file in a specified directory, as so:
 
-%EXAMPLE: example/src/index.js%
+%EXAMPLE: example/src%
 
 When writing tests with _Zoroaster_, the project directory will have the `src` and `test` directories:
 
@@ -12,7 +12,7 @@ When writing tests with _Zoroaster_, the project directory will have the `src` a
 
 To implement tests with masks, a mask implementation should be set up in the `mask` directory:
 
-%EXAMPLE: example/test/mask/default.js, ../../../src => temp-context%
+%EXAMPLE: example/test/mask/default, ../../../src => temp-context%
 
 The results file which contains data about how input should be mapped to the output is saved in the `results` directory:
 
@@ -26,7 +26,7 @@ Now when run, `zoroaster` will use the mask test suite (generated with the `make
 
 Occasionally, there are times when masks are not flexible enough to run tests. Specs are individual test cases, and can access test contexts assigned to the `context` property of a test suite.
 
-%EXAMPLE: example/test/spec/default.js, ../../../src => temp-context%
+%EXAMPLE: example/test/spec/default, ../../../src => temp-context%
 
 ### Output
 

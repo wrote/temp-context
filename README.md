@@ -167,7 +167,7 @@ export default makeTestSuite('example/test/result', {
 
 The results file which contains data about how input should be mapped to the output is saved in the `results` directory:
 
-```md
+```markdown
 ## creates a file in the temp directory
 input data
 
