@@ -4,7 +4,7 @@ import TempContext from '../../src'
 /**
  * This test suite will clone an input and take a snapshot of the temp directory.
  */
-const ts = makeTestSuite('test/result/snapshot.md', {
+export default makeTestSuite('test/result/snapshot', {
   /**
    * @param {string} input
    * @param {TempContext} param1
@@ -16,5 +16,3 @@ const ts = makeTestSuite('test/result/snapshot.md', {
   },
   context: TempContext,
 })
-
-export default ts
